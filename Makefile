@@ -2,11 +2,8 @@ BOX=vagrant-windows-cpp.box
 
 .PHONY: launch-vm clean-vm clean-boxes clean-vagrant-metadata
 
-launch-vm: Vagrantfile bootstrap.ps1
+launch-vm: Vagrantfile vsexec.bat bootstrap.ps1
 	vagrant up
-
-test: launch-vm
-	vagrant ssh --no-tty -c "powershell -Command \"cd C:\\vagrant; C:\\Users\\vagrant\\vsexec.bat cl /Fehello.exe /EHsc hello.cpp; .\hello\""
 
 clean-vm:
 	-vagrant destroy -f
@@ -19,5 +16,8 @@ clean-vagrant-metadata:
 
 clean: clean-boxes clean-vm clean-vagrant-metadata
 
-$(BOX): export.Vagrantfile clean launch-vm
+$(BOX): clean-boxes clean-vm launch-vm export.Vagrantfile
 	vagrant package --output $(BOX) --vagrantfile export.Vagrantfile
+
+install-box-virtualbox: $(BOX)
+	vagrant box add --force --name mcandre/vagrant-windows-cpp $(BOX)

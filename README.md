@@ -7,6 +7,7 @@ https://app.vagrantup.com/mcandre/boxes/vagrant-windows-cpp
 # EXAMPLE
 
 ```console
+$ cd test
 $ vagrant up
 $ vagrant ssh --no-tty -c "powershell -Command \"cd C:\\vagrant; C:\\Users\\vagrant\\vsexec.bat cl /Fehello.exe /EHsc hello.cpp; .\hello\""
 ...
