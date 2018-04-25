@@ -2,12 +2,13 @@
 
 # VAGRANT CLOUD
 
-https://app.vagrantup.com/mcandre/boxes/vagrant-windows-cpp
+* https://app.vagrantup.com/mcandre/boxes/vagrant-windows-cpp-amd64
+* https://app.vagrantup.com/mcandre/boxes/vagrant-windows-cpp-i386
 
 # EXAMPLE
 
 ```console
-$ cd test
+$ cd amd64/test
 $ vagrant up
 $ vagrant ssh --no-tty -c "powershell -Command \"cd C:\\vagrant; C:\\Users\\vagrant\\vsexec.bat cl /Fehello.exe /EHsc hello.cpp; .\hello\""
 ...
@@ -32,5 +33,6 @@ Hello World!
 # EXPORT
 
 ```console
-$ make vagrant-windows-cpp.box
+$ sh -c "cd amd64 && make vagrant-windows-cpp-amd64.box"
+$ sh -c "cd i386 && make vagrant-windows-cpp-i386.box"
 ```
