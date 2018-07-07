@@ -5,5 +5,5 @@
 ::
 :: Requires a Command Prompt or PowerShell context to operate.
 
-call "C:\\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64
+call "C:\Program Files\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x86
 %*
